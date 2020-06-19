@@ -81,16 +81,16 @@ public class GamePanel extends JPanel {
       e.printStackTrace();
     }
   }
-  //test
+  // test
   int BulletTime = 0;
-  int SunTime=0;
+  int SunTime = 0;
   // 绘制植物
   public void drawPlant(Graphics g) {
     for (int i = 0; i < PlantList.size(); i++) {
       Plant plant = PlantList.get(i);
-      if(plant instanceof CherryBomb ||plant instanceof PotatoMine){
-        //樱桃，土豆要专门写一个if语句，主要是相判断如果樱桃周围没有图像和周围有僵尸的图像不一样
-        for(int k = 0; k < ZombieList.size(); k++) {
+      if (plant instanceof CherryBomb || plant instanceof PotatoMine) {
+        // 樱桃，土豆要专门写一个if语句，主要是相判断如果樱桃周围没有图像和周围有僵尸的图像不一样
+        for (int k = 0; k < ZombieList.size(); k++) {
           Zombie zom = ZombieList.get(k);
           // 如果二者矩阵位置重合，则代表樱桃爆炸炸掉僵尸
           if (plant.getPlantRec().intersects(zom.getZombieRec())) {
@@ -103,16 +103,15 @@ public class GamePanel extends JPanel {
       plant.setBullet();
       plant.placeImage(g);
 
-      if(plant instanceof SunFlower) {
-        if(SunTime++%30==0) {
+      if (plant instanceof SunFlower) {
+        if (SunTime++ % 30 == 0) {
           ((SunFlower) plant).setSun();
-          sunList.addAll(((SunFlower)plant).getSun());
-          for(int l=0;l<((SunFlower)plant).getSun().size();l++) {
-            Sun s=((SunFlower)plant).getSun().get(l);
-            if(s.isIsclick()) ((SunFlower)plant).getSun().remove(s);
+          sunList.addAll(((SunFlower) plant).getSun());
+          for (int l = 0; l < ((SunFlower) plant).getSun().size(); l++) {
+            Sun s = ((SunFlower) plant).getSun().get(l);
+            if (s.isIsclick()) ((SunFlower) plant).getSun().remove(s);
           }
         }
-
       }
 
       if (plant.getBulletList() != null && BulletTime++ % 5 == 0)
@@ -151,8 +150,7 @@ public class GamePanel extends JPanel {
       for (int k = 0; k < ZombieList.size(); k++) {
         Zombie zom = ZombieList.get(k);
         // 如果二者矩阵位置重合，则代表僵尸会吃植物,地刺除外
-        if (!(plant instanceof Spikeweed)
-            && plant.getPlantRec().intersects(zom.getZombieRec())) {
+        if (!(plant instanceof Spikeweed) && plant.getPlantRec().intersects(zom.getZombieRec())) {
           zom.setStatus(1);
           plant.isAttacked(zom);
           if (plant.getBlood() == 0) {
@@ -177,13 +175,13 @@ public class GamePanel extends JPanel {
         ZombieList.remove(zom);
       }
       if (zom.getPoint().x < 100) {
-        //g.setColor(Color.RED);
-        //g.setFont(new Font("Setif", Font.BOLD, 50));
-        //g.drawString("你的脑子被僵尸吃掉了", 330, 220);
-        File file = new File("graphics/Screen/bg2.jpg");            //这里有一个修改的
-        try{
-          g.drawImage(ImageIO.read(file),0,0,null);
-        }catch(IOException e){
+        // g.setColor(Color.RED);
+        // g.setFont(new Font("Setif", Font.BOLD, 50));
+        // g.drawString("你的脑子被僵尸吃掉了", 330, 220);
+        File file = new File("graphics/Screen/bg2.jpg"); // 这里有一个修改的
+        try {
+          g.drawImage(ImageIO.read(file), 0, 0, null);
+        } catch (IOException e) {
           e.printStackTrace();
         }
       }
@@ -293,7 +291,7 @@ public class GamePanel extends JPanel {
       if (Util.SPIKREC.contains(e.getPoint())) {
         flag = Util.SPIKEWEED_FLAG;
       }
-    }else if (e.getButton() == MouseEvent.BUTTON3){
+    } else if (e.getButton() == MouseEvent.BUTTON3) {
       flag = Util.PLANTNULL_FLAG;
     }
   }
@@ -302,16 +300,16 @@ public class GamePanel extends JPanel {
   public void addZombie() {
     // 有植物没僵尸的情况
     if (PlantList.size() >= 1 && ZombieList.size() < 1) {
-      int lastZomY=0;
+      int lastZomY = 0;
       for (int i = 0; i < Zombiecnt; i++) {
         int type = rand.nextInt(30) + 1; // 出现僵尸种类
-        int typenum=0;
-        if(type<=10) typenum=Util.NORMAL_FLAG;
-        else if(type<=15) typenum=Util.FLAG_FLAG;
-        else if(type<=20) typenum=Util.NEWS_FLAG;
-        else if(type<=24) typenum=Util.CONE_FLAG;
-        else if(type<=28) typenum=Util.BUCK_FLAG;
-        else typenum=Util.FOOTBALL_FLAG;
+        int typenum = 0;
+        if (type <= 10) typenum = Util.NORMAL_FLAG;
+        else if (type <= 15) typenum = Util.FLAG_FLAG;
+        else if (type <= 20) typenum = Util.NEWS_FLAG;
+        else if (type <= 24) typenum = Util.CONE_FLAG;
+        else if (type <= 28) typenum = Util.BUCK_FLAG;
+        else typenum = Util.FOOTBALL_FLAG;
 
         switch (typenum) {
           case Util.NORMAL_FLAG:
@@ -333,7 +331,7 @@ public class GamePanel extends JPanel {
             ZombieList.add(new FootballZombie(lastZomY));
             break;
         }
-        lastZomY=ZombieList.get(i).getPoint().y;
+        lastZomY = ZombieList.get(i).getPoint().y;
       }
     }
     if (Zombiecnt < 5) Zombiecnt++;
@@ -407,7 +405,7 @@ public class GamePanel extends JPanel {
           if (z.getZombieRec().intersects(p.getPlantRec())) {
             z.loseBlood();
           }
-          //血量低于0，抹掉
+          // 血量低于0，抹掉
           if (z.getBlood() <= 0) {
             z.setStatus(2);
             it.remove();
@@ -462,15 +460,15 @@ public class GamePanel extends JPanel {
     drawCard(g);
     drawPlant(g);
     drawSun(g);
-    //drawFlowerSun(g);
+    // drawFlowerSun(g);
     addZombie();
     drawZombie(g);
     SpikeRock();
-    if(SunNum<0){                                                 //hi这里有一个修改的
+    if (SunNum < 0) { // hi这里有一个修改的
       g.setColor(Color.RED);
       g.setFont(new Font("Setif", Font.BOLD, 32));
       g.drawString("阳光数不足", 330, 220);
-      g.draw3DRect(50,55,30,30,true);
+      g.draw3DRect(50, 55, 30, 30, true);
     }
   }
 }

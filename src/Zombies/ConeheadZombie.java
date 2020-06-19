@@ -33,7 +33,7 @@ public class ConeheadZombie extends Zombie {
   };
 
   public ConeheadZombie(int last) {
-    super(166, 144,last);
+    super(166, 144, last);
 
     this.attack = 100;
     this.HitPoint = 270;

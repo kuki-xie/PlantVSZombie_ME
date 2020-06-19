@@ -54,9 +54,9 @@ public class PotatoMine extends Plant {
       if (index >= 35) {
         return null;
       } else return imgs[index++ % 35];
-    }else{
-      if (index>=15) return null;
-      else return imgs[index++%15];
+    } else {
+      if (index >= 15) return null;
+      else return imgs[index++ % 15];
     }
     /*if(index==46){
       return null;

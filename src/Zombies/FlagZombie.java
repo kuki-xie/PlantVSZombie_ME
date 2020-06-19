@@ -19,11 +19,11 @@ public class FlagZombie extends Zombie {
       for (int i = 0; i < 10; i++) {
         File file =
             new File("graphics/Zombies/FlagZombie/FlagZombieAttack/FlagZombieAttack_" + i + ".png");
-        imgs[i+12] = ImageIO.read(file);
+        imgs[i + 12] = ImageIO.read(file);
       }
       for (int i = 0; i < 10; i++) {
         File file = new File("graphics/Zombies/NormalZombie/ZombieDie/ZombieDie_" + i + ".png");
-        imgs[i+12+10] = ImageIO.read(file);
+        imgs[i + 12 + 10] = ImageIO.read(file);
       }
     } catch (Exception e) {
       e.printStackTrace();
@@ -31,7 +31,7 @@ public class FlagZombie extends Zombie {
   };
 
   public FlagZombie(int last) {
-    super(166, 144,last);
+    super(166, 144, last);
     // TODO 自动生成的构造函数存根
 
     this.attack = 100;

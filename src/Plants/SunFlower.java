@@ -10,7 +10,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 public class SunFlower extends Plant {
-  private List<Sun> SunList=new ArrayList<>();
+  private List<Sun> SunList = new ArrayList<>();
   private static BufferedImage[] imgs;
 
   static {
@@ -47,17 +47,15 @@ public class SunFlower extends Plant {
     // TODO 自动生成的方法存根
   }
 
-
   public void setSun() {
-    if (this.SunList.size()==0) {
+    if (this.SunList.size() == 0) {
       int x = point.x;
       int y = point.y;
-      this.SunList.add(new Sun(new Point(x + 10, y + 3),y + 20));
+      this.SunList.add(new Sun(new Point(x + 10, y + 3), y + 20));
     }
   }
 
-  public List<Sun> getSun(){
+  public List<Sun> getSun() {
     return SunList;
   }
-
 }

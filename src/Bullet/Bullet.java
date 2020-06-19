@@ -24,10 +24,9 @@ public abstract class Bullet {
     g.drawImage(getImage(), Bulletpoint.x, Bulletpoint.y, null);
   }
 
-
   // ��ȡ�ӵ�����
   public Rectangle getBullteRec() {
-    return new Rectangle(Bulletpoint.x+22, Bulletpoint.y, 34, 34);
+    return new Rectangle(Bulletpoint.x + 22, Bulletpoint.y, 34, 34);
   }
 
   // 子弹的移动
@@ -61,7 +60,9 @@ public abstract class Bullet {
     this.speed = s;
   }
 
-  public boolean isHit() { return isHit; }
+  public boolean isHit() {
+    return isHit;
+  }
 
   public void setHit(boolean isHit) {
     this.isHit = isHit;
